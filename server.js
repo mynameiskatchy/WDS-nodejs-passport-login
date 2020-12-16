@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bcrypt = require('bcrypt')
 
 const users = []
 
@@ -23,8 +24,21 @@ app.get('/register', (req, res) => {
     res.render('register.ejs')
 })
 
-app.post('/register', (req, res) => {
-    req.body.email
+app.post('/register', async(req, res) => {
+    try {
+        // make a hashed password to store in db (10 is a good standard)
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        users.push({
+            id: Date.now().toString(),
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        })
+        res.redirect('/login')
+    } catch {
+        res.redirect('/register')
+    }
+    console.log(users) // since we dont have db it is stored in var
 })
 
 app.listen(3000)
