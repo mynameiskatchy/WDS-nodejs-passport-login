@@ -30,7 +30,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get('/', (req, res) => {
+app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.name })
 })
 
@@ -64,6 +64,13 @@ app.post('/register', async(req, res) => {
     }
     console.log(users) // since we dont have db it is stored in var
 })
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    res.redirect('/login')
+}
 
 app.listen(3000)
 console.log('http://localhost:3000/')
