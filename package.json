@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-passport-login",
+  "version": "1.0.0",
+  "description": "https://www.youtube.com/watch?v=-RCnNyD0L-s&list=PLZlA0Gpn_vH9yI1hwDVzWqu5sAfajcsBQ",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mynameiskatchy/nodejs-passport-login.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mynameiskatchy/nodejs-passport-login/issues"
+  },
+  "homepage": "https://github.com/mynameiskatchy/nodejs-passport-login#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
+  }
+}
